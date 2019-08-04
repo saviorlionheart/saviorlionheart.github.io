@@ -7,10 +7,12 @@
     position: absolute;
     text-align: center;
     top: 50px;
-    width: 60px;
-    height: 40px;
+    width: 80px;
+    height: 60px;
     background: white;
-    border: 0px;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
   }
 </style>
 <body onload='init()'>
@@ -61,7 +63,7 @@
   .style("opacity",1)
   .style("left",(d3.mouse(this)[0])+"px")
   .style("top",(d3.mouse(this)[1])+"px")
-  tooltip.html("AverageCityMPG: "+d.AverageCityMPG)
+  .html("<p>City MPG: "+d.AverageCityMPG+"<br>Highway MPG: " + AverageH +"</p>")
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
   
