@@ -17,9 +17,10 @@
   <body onload='init()'>
     
     <p>
-      In class, we looked at the relationship between Highway and City gas mileage for various 2017 car models
-      <br>       (https://flunky.github.io/cars2017.csv)
-      <br>  Here we look at how mileage is related to number of cylinders and fuel type.
+      <br> In class, we looked at the relationship between Highway and City gas mileage for various 2017 car models
+      <br> Here we look at how mileage is related to number of cylinders and fuel type.
+      <br> Hover over points to see car details.
+      <br> (Data source: https://flunky.github.io/cars2017.csv)
     </p>
     <button onclick="onClickScene0()" class="btn0">Home</button>
     <button onclick="onClickScene1()" class="btn0">Cylinders</button>
@@ -117,7 +118,7 @@
 
       d3.select('svg')
       .append("g")
-      .attr("transform","translate("+(margin+0.5*height)+","+(height+1.5*margin+)+")")
+      .attr("transform","translate("+(margin+0.5*height)+","+(height+1.5*margin)+")")
       .append("text")      // text label for the x axis
       .style("text-anchor", "middle")
       .text("Average City MPG");      
