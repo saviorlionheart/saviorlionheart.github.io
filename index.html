@@ -84,7 +84,7 @@
   .data(data)
   .enter().append('circle')
   .attr('cx',function(d,i) 
-  {return x(d.Make);})
+  {return x(d.EngineCylinders);})
   .attr('cy',function(d,i) 
   {return y(d.AverageCityMPG);})
   .attr('r',function(d,i) {return parseInt(d.EngineCylinders)+2;})
