@@ -163,7 +163,7 @@
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
 
-  xAxis = d3.axisBottom(x);
+  xAxis = d3.axisBottom(x)
   .tickValues(["Electricity","Gasoline","Diesel"])
   .tickFormat(d3.format("~s"))
   
