@@ -17,10 +17,10 @@
 <body onload='init()'>
 
 
-<svg class="scatterplot" width=500 height=500>
+<svg class="chart" width=500 height=500>
 </svg>
-<button class="btn1">Home1</button>
-<button class="btn2">Home2</button>
+<button onclick="onClickScene0()" class="btn0">Home1</button>
+<button onclick="onClickScene1()" class="btn1">Home2</button>
 <button class="btn3">Home3</button>
 <button class="btn4">Home4</button>
 
@@ -39,7 +39,24 @@
   }
 
   function drawscene() {
-    if (scene == 0) drawscene0();
+  d3.select('.chart').html = "";
+  if (scene == 0) drawscene0();
+  if (scene == 1) drawscene1();
+  }
+
+  function onClickScene0() {
+  scene = 0;
+  drawscene();
+  }
+  
+  function onClickScene1() {
+  scene = 1;
+  drawscene();
+  }
+  
+  function drawscene1() {
+  d3.select('.chart').html = "Alright!";
+
   }
 
   function drawscene0() {
@@ -59,7 +76,7 @@
   var tooltip = d3.select("#tooltip");
   
   
-  d3.select('.scatterplot')
+  d3.select('.chart')
   .attr("width" , width  + 2*margin)
   .attr("height", height + 2*margin)
   .append("g")
