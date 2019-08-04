@@ -136,6 +136,8 @@
 
       function drawscene1() {
 
+      document.getElementById("header").innerHTML = "Here we can see that the gas mileage consistently decreases with the number of cylinders in the engine."
+
       var x = d3.scaleLinear()
       .domain([0,12])
       .range([0,width])
@@ -194,8 +196,10 @@
 
       function drawscene2() {
 
+      document.getElementById("header").innerHTML = "Electric cars clearly provide better mileage.  <br> The diesel cars covered are also not too bad. <br> Note that high performance gasoline cars have terrible gas mileage."
+
       var x = d3.scalePoint()
-      .domain(["Electricity","Gasoline","Diesel"])
+      .domain(["Electricity","Diesel","Gasoline"])
       .range([0,width])
       var y = d3.scaleLog()
       .base(10)
