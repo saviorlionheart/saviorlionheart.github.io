@@ -121,11 +121,17 @@
       .attr("transform","translate("+margin+","+(height+margin)+")")
       .call(xAxis)
 
+      d3.select('svg')
+      .append("g")
+      .attr("transform","rotate(-90)")
+      .attr("transform","translate("+(0.5*margin)+","+(margin+0.5*height)")
+      .append("text")      // text label for the x axis
+      .style("text-anchor", "middle")
+      .text("Average City MPG");      
       yAxis = d3.axisLeft(y)
       .tickValues([10,20,50,100])
       .tickFormat(d3.format("~s"))
-      d3.select('svg').append("g").attr("transform",
-      "translate("+margin+","+margin+")")
+      d3.select('svg').append("g").attr("transform","translate("+margin+","+margin+")")
       .call(yAxis)
 
       }
