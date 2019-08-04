@@ -6,9 +6,8 @@
     opacity: 0;
     position: absolute;
     text-align: center;
-    top: 50px;
-    width: 100px;
-    height: 80px;
+    width: 60px;
+    height: 40px;
     background: white;
     border: 0px;
   }
@@ -58,9 +57,9 @@
   .on("mouseover",function(d,i) {
 
   tooltip.style("opacity",1)
-  tooltip.style("left",(d3.mouse(this)[0])+"px")
-  tooltip.style("top",(d3.mouse(this)[1])+"px")
-  tooltip.html("AverageCityMPG: "+d.AverageCityMPG)
+  .style("left",(d3.mouse(this)[0])+"px")
+  .style("top",(d3.mouse(this)[1])+"px")
+  .html("AverageCityMPG: "+d.AverageCityMPG)
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
   
