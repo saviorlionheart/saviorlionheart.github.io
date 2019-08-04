@@ -109,22 +109,24 @@
       xAxis = d3.axisBottom(x)
       .tickValues([10,20,50,100])
       .tickFormat(d3.format("~s"))
+
       d3.select('svg')
       .append("g")
-      .attr("transform",
-      "translate("+margin+","
-      +(height+margin)+")")
+      .attr("transform","translate("+margin+","+(height+margin)+")")
       .call(xAxis)
+
+      d3.select('svg').
+      .append("g")
+      .attr("transform","translate("+margin+","+(height+margin)+")")
+      .append("text")      // text label for the x axis
+      .style("text-anchor", "middle")
+      .text("mpg");      
+
 
       yAxis = d3.axisLeft(y)
       .tickValues([10,20,50,100])
       .tickFormat(d3.format("~s"))
 
-      d3.select('svg').append("text")      // text label for the x axis
-      .attr("x", 200 )
-      .attr("y",  420 )
-      .style("text-anchor", "middle")
-      .text("mpg");      
       
       d3.select('svg').append("g").attr("transform",
       "translate("+margin+","+margin+")")
