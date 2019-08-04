@@ -1,40 +1,65 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> rect {fill: lightblue; stroke: black; }</style>
-<body>
+<style> circle {fill: lightblue; stroke: black;} </style>
+<body onload='init()'>
 <svg width=300 height=300>
 </svg>
 <script>
-var data = [4,8,15,16,23,42];
+  async function init() {
+const data = await 
+  d3.csv('https://flunky.github.io/cars2017.csv');
+
+margin = 50
+height = 200
+width  = 200
+
+x = d3.scaleLog()
+     .base(10)
+     .domain([10,150])
+     .range([0,width])
+//     
+y = d3.scaleLog()
+     .base(10)
+     .domain([10,150])
+     .range([height,0]);
 
 
 
-
-
-ydomain = [0,42];
-yrange = [0,200];
-xdomain = [0,5];
-xrange = [0,200*4/5];
-cdomain = [0,42];
-crange = ["blue","orange"];
-
-xs = d3.scaleLinear().domain(xdomain).range(xrange);
-ys = d3.scaleLinear().domain(ydomain).range(yrange);
-cs = d3.scaleLinear().domain(cdomain).range(crange);
 d3.select('svg')
-  .selectAll('rect')
-  .data(data)
-  .enter()
-  .append('rect')
-    .attr('y',10)
-    .attr('x',function(d,i) {return xs(i);})
-    .attr('height',function(d,i) {return ys(d);})
-    .attr('width',10)
-    .style('fill',function(d,i) {return cs(d);});
+     .attr("width" , width  + 2*margin)
+     .attr("height", height + 2*margin)
+     .append("g")
+     .attr("transform",
+           "translate("+margin+","+margin+")")
+     .selectAll('circle')
+        .data(data)
+     .enter().append('circle')
+     .attr('cx',function(d,i) 
+          {return x(d.AverageCityMPG);})
+     .attr('cy',function(d,i) 
+          {return y(d.AverageHighwayMPG);})
+     .attr('r',function(d,i) 
+           {return parseInt(d.EngineCylinders)+2;})
 
+ 
+xAxis = d3.axisBottom(x)
+        .tickValues([10,20,50,100])
+        .tickFormat(d3.format("~s"))
+d3.select('svg')
+     .append("g")
+     .attr("transform",
+           "translate("+margin+","
+           +(height+margin)+")")
+     .call(xAxis)
 
+yAxis = d3.axisLeft(y)
+        .tickValues([10,20,50,100])
+        .tickFormat(d3.format("~s"))
 
-
+d3.select('svg').append("g").attr("transform",
+           "translate("+margin+","+margin+")")
+  .call(yAxis)
+  }
 </script>
 </body>
 </html>
