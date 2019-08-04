@@ -1,1 +1,40 @@
-Hello World2
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> rect {fill: lightblue; stroke: black; }</style>
+<body>
+<svg width=300 height=300>
+</svg>
+<script>
+var data = [4,8,15,16,23,42];
+
+
+
+
+
+ydomain = [0,42];
+yrange = [0,200];
+xdomain = [0,5];
+xrange = [0,200*4/5];
+cdomain = [0,42];
+crange = ["blue","orange"];
+
+xs = d3.scaleLinear().domain(xdomain).range(xrange);
+ys = d3.scaleLinear().domain(ydomain).range(yrange);
+cs = d3.scaleLinear().domain(cdomain).range(crange);
+d3.select('svg')
+  .selectAll('rect')
+  .data(data)
+  .enter()
+  .append('rect')
+    .attr('y',10)
+    .attr('x',function(d,i) {return xs(i);})
+    .attr('height',function(d,i) {return ys(d);})
+    .attr('width',10)
+    .style('fill',function(d,i) {return cs(d);});
+
+
+
+
+</script>
+</body>
+</html>
