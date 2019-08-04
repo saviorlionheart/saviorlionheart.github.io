@@ -24,17 +24,21 @@
 
 <script>
   var scene = 0;
+
+  var data = 0;
+  
   async function init() { 
-  const data = await d3.csv('https://flunky.github.io/cars2017.csv');
+  const dataInit = await d3.csv('https://flunky.github.io/cars2017.csv');
+  data = dataInit;
   scene = 0;
-  drawscene(data);
+  drawscene();
   }
 
-  function drawscene(data) {
+  function drawscene() {
     if (scene == 0) drawscene0(data);
   }
 
-  function drawscene0(data) {
+  function drawscene0() {
   margin = 50
   height = 200
   width  = 200
