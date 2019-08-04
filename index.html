@@ -117,10 +117,10 @@
 
       d3.select('svg')
       .append("g")
-      .attr("transform","translate("+margin+","+(height+margin)+")")
+      .attr("transform","translate("+margin+0.5*height+","+(height+margin)+")")
       .append("text")      // text label for the x axis
       .style("text-anchor", "middle")
-      .text("mpg");      
+      .text("Average City MPG");      
 
 
       yAxis = d3.axisLeft(y)
