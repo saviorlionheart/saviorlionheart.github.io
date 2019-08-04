@@ -5,7 +5,7 @@
   #tooltip {
     opacity: 0;
     position: absolute;
-  text-align: center;
+    text-align: center;
     top: 50px;
     width: 60px;
     height: 40px;
@@ -57,8 +57,10 @@
   .attr('r',function(d,i) {return parseInt(d.EngineCylinders)+2;})
   .on("mouseover",function(d,i) {
 
-  tooltip.style("opacity",1)
-  tooltip.style("top",(d3.mouse(this)[1])+"py")
+  tooltip
+  .style("opacity",1)
+  .style("left",(d3.mouse(this)[0])+"px")
+  .style("top",(d3.mouse(this)[1])+"px")
   tooltip.html("AverageCityMPG: "+d.AverageCityMPG)
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
