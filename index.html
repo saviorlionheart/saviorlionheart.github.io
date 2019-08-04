@@ -2,8 +2,9 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <body onload='init()'>
-<svg width=300 height=300>
+<svg class="scatterchart" width=300 height=300>
 </svg>
+
 <script>
   async function init() {
 const data = await 
@@ -17,7 +18,6 @@ x = d3.scaleLog()
      .base(10)
      .domain([10,150])
      .range([0,width])
-//     
 y = d3.scaleLog()
      .base(10)
      .domain([10,150])
