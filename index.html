@@ -59,7 +59,6 @@
   tooltip
   .style("opacity",1)
   .style("top",(d3.mouse(this)[1])+"py")
-  .style("left",(d3.mouse(this)[0])+"px")
   .html("AverageCityMPG: "+d.AverageCityMPG)
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
