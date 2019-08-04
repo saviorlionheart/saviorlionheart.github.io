@@ -164,8 +164,14 @@
       })
       .on("mouseout",function() { tooltip.style("opacity",0)})
 
+      d3.select('svg')
+      .append("g")
+      .attr("transform","translate("+(margin+0.5*width)+","+(height+1.75*margin)+")")
+      .append("text")      // text label for the x axis
+      .style("text-anchor", "middle")
+      .text("Engine Cylinders");      
       xAxis = d3.axisBottom(x)
-      .tickValues([0,2,4,6,8,10,12])
+      .tickValues([0,2,3,4,6,8,10,12])
       .tickFormat(d3.format("~s"))
 
       d3.select('svg')
@@ -217,6 +223,12 @@
       })
       .on("mouseout",function() { tooltip.style("opacity",0)})
 
+      d3.select('svg')
+      .append("g")
+      .attr("transform","translate("+(margin+0.5*width)+","+(height+1.75*margin)+")")
+      .append("text")      // text label for the x axis
+      .style("text-anchor", "middle")
+      .text("Engine Type");      
       xAxis = d3.axisBottom(x);
       
       
