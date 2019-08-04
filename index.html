@@ -123,8 +123,12 @@
       d3.select('svg').append("g").attr("transform",
       "translate("+margin+","+margin+")")
       .call(yAxis)
-      }
-
+      .append("text")      // text label for the x axis
+      .attr("x", -10 )
+      .attr("y",  200 )
+      .style("text-anchor", "middle")
+      .text("mpg");      }
+      
 
       function drawscene1() {
       console.log("HERE1");
