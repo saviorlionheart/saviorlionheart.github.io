@@ -39,7 +39,7 @@
   }
 
   function drawscene() {
-  d3.select('svg').html = "";
+  d3.select('.chart').remove();
   console.log("scene: ",scene);
   if (scene == 0) drawscene0();
   if (scene == 1) drawscene1();
@@ -58,7 +58,6 @@
   
   function drawscene1() {
   console.log("HERE1");
-  d3.select('svg').empty();
 
   margin = 50
   height = 400
