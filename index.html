@@ -63,51 +63,8 @@
   height = 400
   width  = 400
   
-  var x = d3.scaleOrdinal()
-  .domain(["Acura"
-,"Alfa Romeo"
-,"Aston Martin"
-,"Audi"
-,"Bentley"
-,"BMW"
-,"Buick"
-,"Cadillac"
-,"Chevrolet"
-,"Chrysler"
-,"Dodge"
-,"Ferrari"
-,"Fiat"
-,"Ford"
-,"Genesis"
-,"GMC"
-,"Honda"
-,"Hyundai"
-,"Infiniti"
-,"Jaguar"
-,"Jeep"
-,"Kia"
-,"Lamborghini"
-,"Land Rover"
-,"Lexus"
-,"Lincoln"
-,"Lotus"
-,"Maserati"
-,"Mazda"
-,"McLaren Automotive"
-,"Mercedes-Benz"
-,"MINI"
-,"Mitsubishi"
-,"Nissan"
-,"Porsche"
-,"Ram"
-,"Rolls-Royce"
-,"Roush Performance"
-,"smart"
-,"Subaru"
-,"Tesla"
-,"Toyota"
-,"Volkswagen"
-,"Volvo"])
+  var x = d3.scale()
+  .domain([0,12])
   .range([0,width])
   var y = d3.scaleLog()
   .base(10)
@@ -140,7 +97,9 @@
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
 
-  xAxis = d3.axisBottom(x);
+  xAxis = d3.axisBottom(x)
+  .tickValues([0,2,4,6,8,10,12])
+  .tickFormat(d3.format("~s"))
 
   d3.select('svg')
   .append("g")
