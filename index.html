@@ -121,11 +121,14 @@
       .attr("transform","translate("+margin+","+(height+margin)+")")
       .call(xAxis)
 
+      var rotate = d3.svg.transform().rotate(-90);
+      var translate = d3.svg.transform().translate((0.5*margin),(margin+0.5*height));
+
+      rect.attr('transform', rotate);
+
       d3.select('svg')
       .append("g")
-      .attr("transform","rotate(-90)")
-      .append("g")
-      .attr("transform","translate("+(0.5*margin)+","+(margin+0.5*height)+")")
+      .attr("transform",function() {return d3.svg.transform().translate((0.5*margin),(margin+0.5*height)).rotate(-90);})
       .append("text")      // text label for the x axis
       .style("text-anchor", "middle")
       .text("Average Highway MPG");      
