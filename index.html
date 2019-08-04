@@ -57,8 +57,6 @@
   .on("mouseover",function(d,i) {
 
   tooltip.style("opacity",1)
-  .style("left",(d3.mouse(this)[0])+"px")
-  .style("bottom",(d3.mouse(this)[1])+"px")
   .html(d.Make+" F: " + d.Fuel + " C: "+d.AverageCityMPG+ " HW: "+d.AverageCityMPG)
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
