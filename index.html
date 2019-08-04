@@ -150,7 +150,7 @@
   .data(data)
   .enter().append('circle')
   .attr('cx',function(d,i) 
-  {return x(d.Fuel);})
+  {return x(toString(d.Fuel));})
   .attr('cy',function(d,i) 
   {return y(d.AverageCityMPG);})
   .attr('r',function(d,i) {return parseInt(d.EngineCylinders)+2;})
@@ -163,7 +163,7 @@
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
 
-  xAxis = d3.axisBottom(x)
+  xAxis = d3.axisBottom(x);
   
   
   d3.select('svg')
