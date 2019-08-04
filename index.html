@@ -63,9 +63,7 @@
   height = 400
   width  = 400
   
-  var x = d3.scaleLog()
-  .base(10)
-  .domain([10,150])
+  var x = d3.scale.ordinal()
   .range([0,width])
   var y = d3.scaleLog()
   .base(10)
@@ -85,7 +83,7 @@
   .data(data)
   .enter().append('circle')
   .attr('cx',function(d,i) 
-  {return x(d.AverageHighwayMPG);})
+  {return x(d.Make);})
   .attr('cy',function(d,i) 
   {return y(d.AverageCityMPG);})
   .attr('r',function(d,i) {return parseInt(d.EngineCylinders)+2;})
@@ -97,9 +95,8 @@
   .html("<p>"+d.Make+" <br>Fuel: " + d.Fuel + "<br>City: "+d.AverageCityMPG+ " mpg<br>HW: "+d.AverageCityMPG+" mpg</p>")
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
-  xAxis = d3.axisBottom(x)
-  .tickValues([10,20,50,100])
-  .tickFormat(d3.format("~s"))
+
+  xAxis = d3.axisBottom(x);
 
   d3.select('svg')
   .append("g")
