@@ -115,7 +115,7 @@
       .attr("transform","translate("+margin+","+(height+margin)+")")
       .call(xAxis)
 
-      d3.select('svg').
+      d3.select('svg')
       .append("g")
       .attr("transform","translate("+margin+","+(height+margin)+")")
       .append("text")      // text label for the x axis
@@ -135,11 +135,11 @@
       }
 
       function drawscene1() {
-      console.log("HERE1");
 
       var x = d3.scaleLinear()
       .domain([0,12])
       .range([0,width])
+
       var y = d3.scaleLog()
       .base(10)
       .domain([10,150])
@@ -147,13 +147,11 @@
       
       var tooltip = d3.select("#tooltip");
       
-      
       d3.select('.chart')
       .attr("width" , width  + 2*margin)
       .attr("height", height + 2*margin)
       .append("g")
-      .attr("transform",
-      "translate("+margin+","+margin+")")
+      .attr("transform","translate("+margin+","+margin+")")
       .selectAll('circle')
       .data(data)
       .enter().append('circle')
@@ -177,17 +175,14 @@
 
       d3.select('svg')
       .append("g")
-      .attr("transform",
-      "translate("+margin+","
-      +(height+margin)+")")
+      .attr("transform","translate("+margin+","+(height+margin)+")")
       .call(xAxis)
       
       yAxis = d3.axisLeft(y)
       .tickValues([10,20,50,100])
       .tickFormat(d3.format("~s"))
       
-      d3.select('svg').append("g").attr("transform",
-      "translate("+margin+","+margin+")")
+      d3.select('svg').append("g").attr("transform","translate("+margin+","+margin+")")
       .call(yAxis)
       }
 
