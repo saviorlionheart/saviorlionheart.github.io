@@ -61,7 +61,7 @@
   tooltip.style("opacity",1)
   .style("left",(d3.event.pageX)+"px")
   .style("top",(d3.event.pageY)+"px")
-  .html("<p>"+d.Make+" MPG <br>F: " + d.Fuel + " <br>City: "+d.AverageCityMPG+ " <br>HW: "+d.AverageCityMPG+"</p>")
+  .html("<p>"+d.Make+" <br>F: " + d.Fuel + " mpg <br>City: "+d.AverageCityMPG+ " mpg<br>HW: "+d.AverageCityMPG+"</p>")
   })
   .on("mouseout",function() { tooltip.style("opacity",0)})
   
