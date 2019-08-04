@@ -129,7 +129,7 @@
   height = 400
   width  = 400
   
-  var x = d3.scaleOrdinal()
+  var x = d3.scaleBand()
   .domain(["Electricity","Gasoline","Diesel"])
   .range([0,width])
   var y = d3.scaleLog()
