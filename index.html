@@ -34,6 +34,10 @@
 
       var data = 0;
       
+      margin = 50
+      height = 400
+      width  = 400
+
       async function init() { 
       const dataInit = await d3.csv('https://flunky.github.io/cars2017.csv');
       data = dataInit;
@@ -64,130 +68,7 @@
       drawscene();
       }
       
-      function drawscene1() {
-      console.log("HERE1");
-
-      margin = 50
-      height = 400
-      width  = 400
-      
-      var x = d3.scaleLinear()
-      .domain([0,12])
-      .range([0,width])
-      var y = d3.scaleLog()
-      .base(10)
-      .domain([10,150])
-      .range([height,0]);
-      
-      var tooltip = d3.select("#tooltip");
-      
-      
-      d3.select('.chart')
-      .attr("width" , width  + 2*margin)
-      .attr("height", height + 2*margin)
-      .append("g")
-      .attr("transform",
-      "translate("+margin+","+margin+")")
-      .selectAll('circle')
-      .data(data)
-      .enter().append('circle')
-      .attr('cx',function(d,i) 
-      {return x(d.EngineCylinders);})
-      .attr('cy',function(d,i) 
-      {return y(d.AverageCityMPG);})
-      .attr('r',function(d,i) {return parseInt(d.EngineCylinders)+2;})
-      .on("mouseover",function(d,i) {
-
-      tooltip.style("opacity",1)
-      .style("left",(d3.event.pageX)+"px")
-      .style("top",(d3.event.pageY)+"px")
-      .html("<p>"+d.Make+" <br>Fuel: " + d.Fuel + "<br>City: "+d.AverageCityMPG+ " mpg<br>HW: "+d.AverageCityMPG+" mpg</p>")
-      })
-      .on("mouseout",function() { tooltip.style("opacity",0)})
-
-      xAxis = d3.axisBottom(x)
-      .tickValues([0,2,4,6,8,10,12])
-      .tickFormat(d3.format("~s"))
-
-      d3.select('svg')
-      .append("g")
-      .attr("transform",
-      "translate("+margin+","
-      +(height+margin)+")")
-      .call(xAxis)
-      
-      yAxis = d3.axisLeft(y)
-      .tickValues([10,20,50,100])
-      .tickFormat(d3.format("~s"))
-      
-      d3.select('svg').append("g").attr("transform",
-      "translate("+margin+","+margin+")")
-      .call(yAxis)
-      }
-
-      function drawscene2() {
-
-      margin = 50
-      height = 400
-      width  = 400
-      
-      var x = d3.scalePoint()
-      .domain(["Electricity","Gasoline","Diesel"])
-      .range([0,width])
-      var y = d3.scaleLog()
-      .base(10)
-      .domain([10,150])
-      .range([height,0]);
-      
-      var tooltip = d3.select("#tooltip");
-      
-      
-      d3.select('.chart')
-      .attr("width" , width  + 2*margin)
-      .attr("height", height + 2*margin)
-      .append("g")
-      .attr("transform",
-      "translate("+margin+","+margin+")")
-      .selectAll('circle')
-      .data(data)
-      .enter().append('circle')
-      .attr('cx',function(d,i) 
-      {return x(d.Fuel);})
-      .attr('cy',function(d,i) 
-      {return y(d.AverageCityMPG);})
-      .attr('r',function(d,i) {return parseInt(d.EngineCylinders)+2;})
-      .on("mouseover",function(d,i) {
-
-      tooltip.style("opacity",1)
-      .style("left",(d3.event.pageX)+"px")
-      .style("top",(d3.event.pageY)+"px")
-      .html("<p>"+d.Make+" <br>Fuel: " + d.Fuel + "<br>City: "+d.AverageCityMPG+ " mpg<br>HW: "+d.AverageCityMPG+" mpg</p>")
-      })
-      .on("mouseout",function() { tooltip.style("opacity",0)})
-
-      xAxis = d3.axisBottom(x);
-      
-      
-      d3.select('svg')
-      .append("g")
-      .attr("transform",
-      "translate("+margin+","
-      +(height+margin)+")")
-      .call(xAxis)
-      
-      yAxis = d3.axisLeft(y)
-      .tickValues([10,20,50,100])
-      .tickFormat(d3.format("~s"))
-      
-      d3.select('svg').append("g").attr("transform",
-      "translate("+margin+","+margin+")")
-      .call(yAxis)
-      }
-
       function drawscene0() {
-      margin = 50
-      height = 400
-      width  = 400
       
       var x = d3.scaleLog()
       .base(10)
@@ -220,7 +101,7 @@
       tooltip.style("opacity",1)
       .style("left",(d3.event.pageX)+"px")
       .style("top",(d3.event.pageY)+"px")
-      .html("<p>"+d.Make+" <br>Fuel: " + d.Fuel + "<br>City: "+d.AverageCityMPG+ " mpg<br>HW: "+d.AverageCityMPG+" mpg</p>")
+      .html("<p>"+d.Make+" <br>Fuel: " + d.Fuel + "<br>City: "+d.AverageCityMPG+ " mpg<br>HW: "+d.AverageCityMPG+" mpg<br>Cyl: "+d.EngineCylinders+"</p>")
       })
       .on("mouseout",function() { tooltip.style("opacity",0)})
       
@@ -243,6 +124,120 @@
       "translate("+margin+","+margin+")")
       .call(yAxis)
       }
+
+
+      function drawscene1() {
+      console.log("HERE1");
+
+      var x = d3.scaleLinear()
+      .domain([0,12])
+      .range([0,width])
+      var y = d3.scaleLog()
+      .base(10)
+      .domain([10,150])
+      .range([height,0]);
+      
+      var tooltip = d3.select("#tooltip");
+      
+      
+      d3.select('.chart')
+      .attr("width" , width  + 2*margin)
+      .attr("height", height + 2*margin)
+      .append("g")
+      .attr("transform",
+      "translate("+margin+","+margin+")")
+      .selectAll('circle')
+      .data(data)
+      .enter().append('circle')
+      .attr('cx',function(d,i) 
+      {return x(d.EngineCylinders);})
+      .attr('cy',function(d,i) 
+      {return y(d.AverageCityMPG);})
+      .attr('r',function(d,i) {return parseInt(d.EngineCylinders)+2;})
+      .on("mouseover",function(d,i) {
+
+      tooltip.style("opacity",1)
+      .style("left",(d3.event.pageX)+"px")
+      .style("top",(d3.event.pageY)+"px")
+      .html("<p>"+d.Make+" <br>Fuel: " + d.Fuel + "<br>City: "+d.AverageCityMPG+ " mpg<br>HW: "+d.AverageCityMPG+" mpg<br>Cyl: "+d.EngineCylinders+"</p>")
+      })
+      .on("mouseout",function() { tooltip.style("opacity",0)})
+
+      xAxis = d3.axisBottom(x)
+      .tickValues([0,2,4,6,8,10,12])
+      .tickFormat(d3.format("~s"))
+
+      d3.select('svg')
+      .append("g")
+      .attr("transform",
+      "translate("+margin+","
+      +(height+margin)+")")
+      .call(xAxis)
+      
+      yAxis = d3.axisLeft(y)
+      .tickValues([10,20,50,100])
+      .tickFormat(d3.format("~s"))
+      
+      d3.select('svg').append("g").attr("transform",
+      "translate("+margin+","+margin+")")
+      .call(yAxis)
+      }
+
+      function drawscene2() {
+
+      var x = d3.scalePoint()
+      .domain(["Electricity","Gasoline","Diesel"])
+      .range([0,width])
+      var y = d3.scaleLog()
+      .base(10)
+      .domain([10,150])
+      .range([height,0]);
+      
+      var tooltip = d3.select("#tooltip");
+      
+      
+      d3.select('.chart')
+      .attr("width" , width  + 2*margin)
+      .attr("height", height + 2*margin)
+      .append("g")
+      .attr("transform",
+      "translate("+margin+","+margin+")")
+      .selectAll('circle')
+      .data(data)
+      .enter().append('circle')
+      .attr('cx',function(d,i) 
+      {return x(d.Fuel);})
+      .attr('cy',function(d,i) 
+      {return y(d.AverageCityMPG);})
+      .attr('r',function(d,i) {return parseInt(d.EngineCylinders)+2;})
+      .on("mouseover",function(d,i) {
+
+      tooltip.style("opacity",1)
+      .style("left",(d3.event.pageX)+"px")
+      .style("top",(d3.event.pageY)+"px")
+      .html("<p>"+d.Make+" <br>Fuel: " + d.Fuel + "<br>City: "+d.AverageCityMPG+ " mpg<br>HW: "+d.AverageCityMPG+" mpg<br>Cyl: "+d.EngineCylinders+"</p>")
+      })
+      .on("mouseout",function() { tooltip.style("opacity",0)})
+
+      xAxis = d3.axisBottom(x);
+      
+      
+      d3.select('svg')
+      .append("g")
+      .attr("transform",
+      "translate("+margin+","
+      +(height+margin)+")")
+      .call(xAxis)
+      
+      yAxis = d3.axisLeft(y)
+      .tickValues([10,20,50,100])
+      .tickFormat(d3.format("~s"))
+      
+      d3.select('svg').append("g").attr("transform",
+      "translate("+margin+","+margin+")")
+      .call(yAxis)
+      }
+
       
     </script>
   </body>
